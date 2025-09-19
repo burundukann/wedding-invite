@@ -234,7 +234,8 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = `До свадьбы осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
+      countdown.innerHTML = `До свадьбы осталось: 
+      <p>${days}д ${hours}ч ${minutes}м ${seconds}с`;</p>
     }
 
     setInterval(updateCountdown, 1000);
@@ -251,3 +252,4 @@
   </script>
 </body>
 </html>
+
