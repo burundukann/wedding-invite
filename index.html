@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Свадебное приглашение — Анна & Сергей</title>
-  <!-- Подключаем красивый каллиграфический шрифт -->
+  <!-- Красивый каллиграфический шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
@@ -15,18 +15,21 @@
       padding: 0;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
     }
     header {
       text-align: center;
       padding: 60px 20px 40px;
-      background: rgba(255, 255, 255, 0.8); /* полупрозрачный фон */
+      background: rgba(255, 255, 255, 0.8);
       border-radius: 0 0 20px 20px;
+      animation: fadeIn 2s ease;
     }
     header h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 4em;
       color: #b91c1c;
       margin-bottom: 10px;
+      animation: slideDown 2s ease;
     }
     header .heart {
       color: #e11d48;
@@ -36,6 +39,7 @@
     header p {
       font-size: 1.2em;
       color: #555;
+      animation: fadeIn 3s ease;
     }
     section {
       background: rgba(255,255,255,0.9);
@@ -44,6 +48,7 @@
       padding: 30px 25px;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeInUp 2s ease;
     }
     section h2 {
       margin-top: 0;
@@ -75,6 +80,41 @@
       margin-left: auto;
       margin-right: auto;
     }
+    /* Галерея */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    /* Анимации */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes slideDown {
+      from {transform: translateY(-50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+    @keyframes fadeInUp {
+      from {transform: translateY(30px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+    /* Таймер */
+    #countdown {
+      font-size: 1.4em;
+      color: #b91c1c;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
@@ -82,12 +122,13 @@
     <h1>Анна <span class="heart">❤</span> Сергей</h1>
     <p>С огромной радостью приглашаем вас на наш самый важный день</p>
     <p><strong>22 ноября 2025 года</strong></p>
+    <div id="countdown"></div>
   </header>
 
   <section>
     <h2>Торжественная церемония</h2>
     <p>
-      Наше бракосочетание состоится <strong>22 ноября 2025 года в 11:20</strong>  
+      Наше бракосочетание состоится <strong>22 ноября 2025 года в 11:20</strong><br>
       в Приморском ЗАГСе по адресу:<br>
       <strong>Стародеревенская ул., 5, Санкт-Петербург</strong>.
     </p>
@@ -129,6 +170,16 @@
   </section>
 
   <section>
+    <h2>Фотогалерея</h2>
+    <div class="gallery">
+      <img src="photo_2025-09-19_18-42-49-fotor-20250919185421.png" alt="Анна и Сергей вместе">
+      <img src="photo_2025-09-19_18-43-19-fotor-2025091919015.png" alt="Программа дня">
+      <img src="photo_2025-09-19_18-43-14-fotor-2025091919448.png" alt="Свободное время">
+      <img src="photo_2025-09-19_18-43-03-fotor-20250919185658.png" alt="Праздничный ужин">
+    </div>
+  </section>
+
+  <section>
     <h2>Подтверждение участия</h2>
     <p>
       Пожалуйста, сообщите нам заранее о вашем присутствии,  
@@ -142,5 +193,31 @@
   <footer>
     © 2025 Анна & Сергей
   </footer>
+
+  <!-- Скрипт для таймера -->
+  <script>
+    const countdown = document.getElementById("countdown");
+    const weddingDate = new Date("Nov 22, 2025 11:20:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "Свадьба уже состоялась 🎉";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `До свадьбы осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
