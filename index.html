@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Свадебное приглашение — Анна & Сергей</title>
-  <!-- Подключаем красивый шрифт -->
+  <!-- Подключаем красивый каллиграфический шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(to bottom, #fff0f5, #fffbe6);
+      background: url("background.png") no-repeat center top fixed;
+      background-size: cover;
       margin: 0;
       padding: 0;
       color: #333;
@@ -18,7 +19,8 @@
     header {
       text-align: center;
       padding: 60px 20px 40px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.8); /* полупрозрачный фон */
+      border-radius: 0 0 20px 20px;
     }
     header h1 {
       font-family: 'Great Vibes', cursive;
@@ -35,16 +37,52 @@
       font-size: 1.2em;
       color: #555;
     }
-    /* остальное стили можно оставить как в прошлой версии */
+    section {
+      background: rgba(255,255,255,0.9);
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      margin-top: 0;
+      color: #b91c1c;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 8px 0;
+    }
+    a {
+      color: #b91c1c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin: 40px 0;
+      font-size: 0.9em;
+      color: #777;
+      text-align: center;
+      background: rgba(255,255,255,0.7);
+      padding: 10px;
+      border-radius: 12px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 <body>
- <header>
-  <h1>Анна <span class="heart">❤</span> Сергей</h1>
-  <p>С огромной радостью приглашаем вас на наш самый важный день</p>
-  <p><strong>22 ноября 2025 года</strong></p>
-</header>
-
+  <header>
+    <h1>Анна <span class="heart">❤</span> Сергей</h1>
+    <p>С огромной радостью приглашаем вас на наш самый важный день</p>
+    <p><strong>22 ноября 2025 года</strong></p>
+  </header>
 
   <section>
     <h2>Торжественная церемония</h2>
@@ -96,7 +134,9 @@
       Пожалуйста, сообщите нам заранее о вашем присутствии,  
       чтобы мы смогли всё организовать наилучшим образом.
     </p>
-    <p class="center"><a href="mailto:you@example.com?subject=RSVP">Написать нам</a></p>
+    <p style="text-align: center;">
+      <a href="mailto:you@example.com?subject=RSVP">Написать нам</a>
+    </p>
   </section>
 
   <footer>
@@ -104,4 +144,3 @@
   </footer>
 </body>
 </html>
-
